@@ -1,0 +1,1 @@
+This repository contains school projects that i have worked on. these projects include graphical program which is programed by python, matrix calculator and collection of simple projects written by c++ and a program that represents some of Ethiopian cities using adjecency matrix in to graph and uses Dijkstra’s algorithm to find the shortest path between two cities.
