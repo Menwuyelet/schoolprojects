@@ -2,7 +2,18 @@
 #include <vector>
 #include <string>
 
+//// Group Members
+// 1. Yeabsira Alexander ---- sec.3 -- G. 6 -- UGR/35603/16
+// 2. Tadele Rogo ---- sec.3 -- G. 5 -- UGR/35460/16
+// 3. Daniel Endalkachew ---- sec.3 -- G. 5 -- UGR/34193/16
+// 4. Menwuyelet Temesgen ---- sec.3 -- G. 5 -- UGR/34920/16
+// 5. Mandela Derje ---- sec.3 -- G. 6 -- UGR/34855/16
+// 6. Maramawit Esualegn ---- sec.3 -- G. 5 -- UGR/34857/16
+// 7. Abigiya Gebremicheal ---- sec.3 -- G. 6 -- UGR/33840/16
+
 using namespace std;
+bool start = true;
+bool condition = false;
 // To use the functions inside one onother we declared them here 
 int main ();
 void addChild(const string& headName, const string& parentName, const string& childName);
@@ -86,6 +97,9 @@ void searchFamilyMember(const string& headName, const string& name) {
 
             if (!member) {
                 cout << "Member not found in family " << headName << "!\n";
+                do{
+                    condition = false;
+                
                 cout << "Would you like to: \n";
                 cout << "1. Try again\n";
                 cout << "2. Return to home\n";
@@ -105,54 +119,73 @@ void searchFamilyMember(const string& headName, const string& name) {
                     case 2:
                         main();
                         break;
+                    default:
+                        condition = true;
+                        cout << "Please choose from the availeble options! \n\n";
+                        break;
                 }
+                }while(condition);
                 return;
             }
             else {
                 cout << "Member found in " << headName << "'s family" << "!\n";
                 cout << "Would you like to: \n";
-                cout << "1. Get details of the member\n";
-                cout << "2. Return to home\n";
-                //
-                int choice;
-                string Name;
-                //
-                cout << "Enter your choice: ";
-                cin >> choice;
-                switch (choice)
-                {
-                    case 1:
-                        getMemberDetails(headName, name);
-                        break;
-                    case 2:
-                        main();
-                        break;
-                }
+                do{
+                    condition = false;  
+                    cout << "1. Get details of the member\n";
+                    cout << "2. Return to home\n";
+                    //
+                    int choice;
+                    string Name;
+                    //
+                    cout << "Enter your choice: ";
+                    cin >> choice;
+                    switch (choice)
+                    {
+                        case 1:
+                            getMemberDetails(headName, name);
+                            break;
+                        case 2:
+                            main();
+                            break;
+                        default:
+                            condition = true;
+                            cout << "Please choose from the availeble options! \n\n";
+                            break;
+                    }
+                }while(condition);  
                 return;
             }
         }
     }
-    cout << "Family with head " << headName << " not found.\n";
-    cout << "Would you like to: \n";
-    cout << "1. Create a family\n";
-    cout << "2. Return to home\n";
-    //
-    int choice;
-    string Name;
-    //
-    cout << "Enter your choice: ";
-    cin >> choice;
-    switch (choice)
-    {
-        case 1:
-            cout << "Enter the name of the family head: ";
-            cin >> Name;
-            addFamily(Name);
-            break;
-        case 2:
-            main();
-            break;
-    }
+    do{
+        condition = false;
+        cout << "Family with head " << headName << " not found.\n";
+        cout << "Would you like to: \n";
+        cout << "1. Create a family\n";
+        cout << "2. Return to home\n";
+        //
+        int choice;
+        string Name;
+        //
+        cout << "Enter your choice: ";
+        cin >> choice;
+        switch (choice)
+        {
+            case 1:
+                cout << "Enter the name of the family head: ";
+                cin >> Name;
+                addFamily(Name);
+                break;
+            case 2:
+                main();
+                break;
+            default:
+                condition = true;
+                cout << "Please choose from the availeble options! \n\n";
+                break;
+        }
+    }while(condition);
 }
 
 // function to add a child to a parent 
@@ -171,21 +204,27 @@ void addChild(const string& headName, const string& parentName, const string& ch
                 //
                 cout << "Added child " << childName << " to parent " << parentName << " in family " << headName << ".\n";
                 cout <<"would you like to: \n";
-                cout << "1. Add another child\n";
-                cout << "2. Return home\n";
-                cout << "Enter your choice: ";
-                cin >> choice;
-                switch (choice)
-                {
-                    case 1:
-                        cout << "Enter the name of the child: ";
-                        cin >> Name;
-                        addChild(headName, parentName, Name);
-                        break;
-                    case 2:
-                        main();
-                        break;
-                }
+                do{
+                    cout << "1. Add another child\n";
+                    cout << "2. Return home\n";
+                    cout << "Enter your choice: ";
+                    cin >> choice;
+                    switch (choice)
+                    {
+                        case 1:
+                            cout << "Enter the name of the child: ";
+                            cin >> Name;
+                            addChild(headName, parentName, Name);
+                            break;
+                        case 2:
+                            main();
+                            break;
+                        default:    
+                            condition = true;
+                            cout << "Please choose from the availeble options! \n\n";
+                            break;
+                    }
+                }while(condition);
                 return;
             } else {
                 //
@@ -194,22 +233,29 @@ void addChild(const string& headName, const string& parentName, const string& ch
                 //
                 cout << "Parent " << parentName << " not found in family " << headName << ".\n";
                 cout << "would you like: \n";
-                cout << "1. Try again\n";
-                cout << "2. Return home\n";
-                cout << "Enter your choice: ";
-                cin >> choice;
-                switch (choice){
-                    case 1:
-                        cout << "Enter the child name: ";
-                        cin >> Name2;
-                        cout << "Enter the parents name: ";
-                        cin >> Name;
-                        addChild(headName, Name, Name2);
-                        break;
-                    case 2:
-                        main();
-                        break;
-                }
+                do{
+                    condition = false;
+                    cout << "1. Try again\n";
+                    cout << "2. Return home\n";
+                    cout << "Enter your choice: ";
+                    cin >> choice;
+                    switch (choice){
+                        case 1:
+                            cout << "Enter the child name: ";
+                            cin >> Name2;
+                            cout << "Enter the parents name: ";
+                            cin >> Name;
+                            addChild(headName, Name, Name2);
+                            break;
+                        case 2:
+                            main();
+                            break;
+                        default:
+                            condition = true;
+                            cout << "Please choose from the availeble options! \n\n";
+                            break;
+                    }
+                }while(condition);
                 return;
             }
         }
@@ -219,18 +265,25 @@ void addChild(const string& headName, const string& parentName, const string& ch
     int choice; 
     //
     cout << "would you like to: \n";
-    cout << "1. Add new familly\n";
-    cout << "2. Return home\n";
-    cout << "Enter your choice: ";
-    cin >> choice;
-    switch (choice){
-        case 1: 
-            addFamily(headName);
-            break;
-        case 2: 
-            main();
-            break;
-    }
+    do{
+        condition = false;
+        cout << "1. Add new familly\n";
+        cout << "2. Return home\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+        switch (choice){
+            case 1: 
+                addFamily(headName);
+                break;
+            case 2: 
+                main();
+                break;
+            default:
+                condition = true;
+                cout << "Please choose from the availeble options! \n\n";
+                break;
+        }
+    }while(condition);
 }
 
 // helper function for displaying the family tree by using recursion
@@ -245,6 +298,7 @@ void displayFamilyTreeHelper(familymember* current, int level) {
     for (familymember* child : current->children) {
         displayFamilyTreeHelper(child, level + 1);  // Move to next level
     }
+    return;
 }
 
 // function to display the family tree by identifying theme by thier name using the above helper function for recursion
@@ -262,65 +316,81 @@ void displayFamilyTree(const string& headName) {
             // Call the helper function for recursion
             displayFamilyTreeHelper(current, 0);
             familyFound = true;  // Set flag to true when family is found
-        }
-        cout << "Would you like to: \n";
-        cout << "1. See details of a member\n";
-        cout << "2. Add a member\n";
-        cout << "3. Delete a member\n";
-        cout << "4. Return to home\n";
-        //
-        int choice;
-        string Name, Name2;
-        cin >> choice;
-        //
-        switch (choice)
-            {
-                case 1:
-                    cout << "Enter the name of the member: ";
-                    cin >> Name2;
-                    getMemberDetails(headName, Name2);
-                    break;
-                case 2:
-                    cout << "Enter the name of the new member: ";
-                    cin >> Name2;
-                    cout << "Enter the parnet name: ";
-                    cin >> Name;
-                    addChild(headName, Name, Name2);
-                    break;
-                case 3:
-                    cout << "Enter the name of the member to delete: ";
-                    cin >> Name2;
-                    deleteMember(headName, Name2);
-                    break;
-                case 4:
-                    main();
-                    break;
-            }
+///////////////
+            cout << "Would you like to: \n";
+            do{
+                condition = false;
+                cout << "1. See details of a member\n";
+                cout << "2. Add a member\n";
+                cout << "3. Delete a member\n";
+                cout << "4. Return to home\n";
+                //
+                int choice;
+                string Name, Name2;
+                cin >> choice;
+                //
+                switch (choice)
+                    {
+                        case 1:
+                            cout << "Enter the name of the member: ";
+                            cin >> Name2;
+                            getMemberDetails(headName, Name2);
+                            break;
+                        case 2:
+                            cout << "Enter the name of the new member: ";
+                            cin >> Name2;
+                            cout << "Enter the parnet name: ";
+                            cin >> Name;
+                            addChild(headName, Name, Name2);
+                            break;
+                        case 3:
+                            cout << "Enter the name of the member to delete: ";
+                            cin >> Name2;
+                            deleteMember(headName, Name2);
+                            break;
+                        case 4:
+                            main();
+                            break;
+                        default:
+                            condition = true;
+                            cout << "Please choose from the availeble options! \n\n";
+                            break;
+                    }
+            }while(condition);
 
-        return;
+        }
+
+       //return;
     }
     
     // If no family was found, print an error message
     if (!familyFound) {
         cout << "Family with head " << headName << " not found.\n";
         cout << "Would you like: \n";
-        cout << "1. Create a family\n";
-        cout << "2. Return to home\n";
-        cout << "Enter your choice: ";
-        int choice;
-        string Name;
-        cin >> choice;
-        switch (choice)
-        {
-            case 1:
-                cout << "Enter the name of the family head: ";
-                cin >> Name;
-                addFamily(Name);
-                break;
-            case 2:
-                main();
-                break;
-        }
+        do{
+            condition = false;
+            cout << "1. Create a family\n";
+            cout << "2. Return to home\n";
+            cout << "Enter your choice: ";
+            int choice;
+            string Name;
+            cin >> choice;
+            switch (choice)
+            {
+                case 1:
+                    cout << "Enter the name of the family head: ";
+                    cin >> Name;
+                    addFamily(Name);
+                    break;
+                case 2:
+                    main();
+                    break;
+                default:
+                    condition = true;
+                    cout << "Please choose from the availeble options! \n\n";
+                    break;
+            }
+        }while(condition);
     }
     
 }
@@ -334,26 +404,33 @@ void getMemberDetails(const string& headName, const string& name) {
 
             if (!member) {
                 cout << "Member not found in family " << headName << "!\n";
-                cout << "Would you like to: \n";
-                cout << "1. Try again\n";
-                cout << "2. Return to home\n";
-                //
-                int choice;
-                string Name;
-                //
-                cout << "Enter your choice: ";
-                cin >> choice;
-                switch (choice)
-                {
-                    case 1:
-                        cout << "Enter the name of the member: ";
-                        cin >> Name;
-                        getMemberDetails(headName, Name);
-                        break;
-                    case 2:
-                        main();
-                        break;
-                }
+                do{
+                    condition = false;
+                    cout << "Would you like to: \n";
+                    cout << "1. Try again\n";
+                    cout << "2. Return to home\n";
+                    //
+                    int choice;
+                    string Name;
+                    //
+                    cout << "Enter your choice: ";
+                    cin >> choice;
+                    switch (choice)
+                    {
+                        case 1:
+                            cout << "Enter the name of the member: ";
+                            cin >> Name;
+                            getMemberDetails(headName, Name);
+                            break;
+                        case 2:
+                            main();
+                            break;
+                        default:
+                            condition = true;
+                            cout << "Please choose from the availeble options! \n\n";
+                            break;
+                    }
+                }while(condition);  
                 return;
             }
 
@@ -417,42 +494,52 @@ void getMemberDetails(const string& headName, const string& name) {
                 cout << "Cousins: None\n";
             }
             cout << "Would you like to: \n";
-            cout << "1. Delete the member\n";
-            cout << "2. Return to home\n";
-            int choice;
-            cout << "Enter your choice: ";
-            cin >> choice;
-            switch (choice)
-            {
-                case 1:
-                    deleteMember(headName, name);
-                    break;
-                case 2:
-                    main();
-                    break;
-            }
+            do{
+                condition = false;
+                cout << "1. Delete the member\n";
+                cout << "2. Return to home\n";
+                int choice;
+                cout << "Enter your choice: ";
+                cin >> choice;
+                switch (choice)
+                {
+                    case 1:
+                        deleteMember(headName, name);
+                        break;
+                    case 2:
+                        main();
+                        break;
+                }
+            }while(condition);
             return;
         }
     }
     cout << "Family with head " << headName << " not found.\n";
     cout << "Would you like: \n";
-    cout << "1. Create a family\n";
-    cout << "2. Return to home\n";
-    cout << "Enter your choice: ";
-    int choice;
-    string Name;
-    cin >> choice;
-    switch (choice)
-    {
-        case 1:
-            cout << "Enter the name of the family head: ";
-            cin >> Name;
-            addFamily(Name);
-            break;
-        case 2:
-            main();
-            break;
-    }
+    do{
+        condition = false;
+        cout << "1. Create a family\n";
+        cout << "2. Return to home\n";
+        cout << "Enter your choice: ";
+        int choice;
+        string Name;
+        cin >> choice;
+        switch (choice)
+        {
+            case 1:
+                cout << "Enter the name of the family head: ";
+                cin >> Name;
+                addFamily(Name);
+                break;
+            case 2:
+                main();
+                break;
+            default:
+                condition = true;
+                cout << "Please choose from the availeble options! \n\n";
+                break;
+        }
+    }while(condition);
 }
 
 // function to determine the relationship between two family members && add nephew and niece relationship and aunt and uncle relationships
@@ -514,22 +601,29 @@ void calculateRelationship(const string& headName, const string& name1, const st
             string Name, Name2;
             //
             cout << "Would you like to: \n";
-            cout << "1. Calculate another relationship\n";
-            cout << "2. Return home\n";
-            cout << "Enter your choice: ";
-            cin >> choice;
-            switch (choice){
-                case 1:
-                    cout << "Enter the first member: ";
-                    cin >> Name;
-                    cout << "Enter the second member: ";
-                    cin >> Name2;
-                    calculateRelationship(headName, Name, Name2);
-                    break;
-                case 2:
-                    main();
-                    break;
-            }
+            do{
+                condition = false;
+                cout << "1. Calculate another relationship\n";
+                cout << "2. Return home\n";
+                cout << "Enter your choice: ";
+                cin >> choice;
+                switch (choice){
+                    case 1:
+                        cout << "Enter the first member: ";
+                        cin >> Name;
+                        cout << "Enter the second member: ";
+                        cin >> Name2;
+                        calculateRelationship(headName, Name, Name2);
+                        break;
+                    case 2:
+                        main();
+                        break;
+                    default:
+                        condition = true;
+                        cout << "Please choose from the availeble options! \n\n";
+                         break;
+                }
+            }while(condition);
             return;
         }
     }
@@ -539,19 +633,25 @@ void calculateRelationship(const string& headName, const string& name1, const st
     string Name;
     //
     cout << "Would you like to: \n";
-    cout << "1. Add the family\n";
-    cout << "2. Return home\n";
-    cout << "Enter your choice: ";
-    cin >> choice;
-    switch (choice){
-        case 1:
-            addFamily(headName);
-            break;
-        case 2:
-            main();
-            break;
-    }
-
+    do{ 
+        condition = false;
+        cout << "1. Add the family\n";
+        cout << "2. Return home\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+        switch (choice){
+            case 1:
+                addFamily(headName);
+                break;
+            case 2:
+                main();
+                break;
+            default:
+                condition = true;
+                cout << "Please choose from the availeble options! \n\n";
+                break;
+        }
+    }while (condition);
 }
 
 // function to delete a member from a family by identifying theme by thire name and family name
@@ -568,20 +668,27 @@ void deleteMember(const string& headName, const string& memberName) {
                 string Name;
                 //
                 cout << "Would you like to: \n";
-                cout << "1. Try again\n";
-                cout << "2. Return to home\n";
-                cout << "Enter your choice: ";
-                cin >> choice;
-                switch (choice){
-                    case 1:
-                        cout << "Enter the member name: ";
-                        cin >> Name;
-                        deleteMember(headName, Name);
-                        break;
-                    case 2:
-                        main();
-                        break;
-                }
+                do{
+                    condition = false;
+                    cout << "1. Try again\n";
+                    cout << "2. Return to home\n";
+                    cout << "Enter your choice: ";
+                    cin >> choice;
+                    switch (choice){
+                        case 1:
+                            cout << "Enter the member name: ";
+                            cin >> Name;
+                            deleteMember(headName, Name);
+                            break;
+                        case 2:
+                            main();
+                            break;
+                        default:
+                            condition = true;
+                            cout << "Please choose from the availeble options! \n\n";
+                            break;
+                    }
+                }while (condition);
                 return;
             }
 
@@ -600,22 +707,29 @@ void deleteMember(const string& headName, const string& memberName) {
                 string Name, Name2;
                 //
                 cout << "would you like to: \n";
-                cout << "1. Delete another member\n";
-                cout << "2. Return to home\n";
-                cout << "Enter your choice: ";
-                cin >> choice;
-                switch (choice){
-                    case 1:
-                        cout << "Enter the family name: ";
-                        cin >> Name;
-                        cout << "Enter the name of the member: ";
-                        cin >> Name2;
-                        deleteMember(Name, Name2);
-                        break;
-                    case 2:
-                        main();
-                        break;
-                }
+                do{
+                    condition = false;
+                    cout << "1. Delete another member\n";
+                    cout << "2. Return to home\n";
+                    cout << "Enter your choice: ";
+                    cin >> choice;
+                    switch (choice){
+                        case 1:
+                            cout << "Enter the family name: ";
+                            cin >> Name;
+                            cout << "Enter the name of the member: ";
+                            cin >> Name2;
+                            deleteMember(Name, Name2);
+                            break;
+                        case 2:
+                            main();
+                            break;
+                        default:
+                            condition = true;
+                            cout << "Please choose from the availeble options! \n\n";
+                            break;
+                    }
+                }while (condition);
                 return;
             }
 
@@ -648,22 +762,30 @@ void deleteMember(const string& headName, const string& memberName) {
             string Name, Name2;
             //
             cout << "would you like to: \n";
-            cout << "1. Delete another member\n";
-            cout << "2. Return home\n";
-            cout << "Enter your choice: ";
-            cin >> choice;
-            switch (choice){
-                case 1: 
-                    cout << "Enter the family name: ";
-                    cin >> Name;
-                    cout << "Enter the member name: ";
-                    cin >> Name2;
-                    deleteMember(Name, Name2);
-                    break;
-                case 2:
-                    main();
-                    break;
-            }
+            do{
+                condition = false;
+                cout << "1. Delete another member\n";
+                cout << "2. Return home\n";
+                cout << "Enter your choice: ";
+                cin >> choice;
+                switch (choice){
+                    case 1: 
+                        cout <<"-----------------------------------------------------------\n";
+                        cout << "Enter the family name: ";
+                        cin >> Name;
+                        cout << "Enter the member name: ";
+                        cin >> Name2;
+                        deleteMember(Name, Name2);
+                        break;
+                    case 2:
+                        main();
+                        break;
+                    default:
+                        condition = true;
+                        cout << "Please choose from the availeble options! \n\n";
+                        break;
+                }
+            }while(condition);
             return;
         }
     }
@@ -673,22 +795,29 @@ void deleteMember(const string& headName, const string& memberName) {
     string Name, Name2;
     //
     cout << "would you like to: \n";
-    cout << "1. Delete from another family\n";
-    cout << "2. Return home\n";
-    cout << "Enter your choice: ";
-    cin >> choice;
-    switch (choice){
-        case 1: 
-            cout << "Enter the family name: ";
-            cin >> Name;
-            cout << "Enter the member name: ";
-            cin >> Name2;
-            deleteMember(Name, Name2);
-            break;
-        case 2:
-            main();
-            break;
-    }
+    do {
+        condition = false;
+        cout << "1. Delete from another family\n";
+        cout << "2. Return home\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+        switch (choice){
+            case 1: 
+                cout <<"-----------------------------------------------------------\n";
+                cout << "Enter the family name: ";
+                cin >> Name;
+                cout << "Enter the member name: ";
+                cin >> Name2;
+                deleteMember(Name, Name2);
+                break;
+            case 2:
+                main();
+                break;
+            default:
+                condition = true;
+                cout << "Please chose from the available options!\n";
+        }
+    }while (condition);
 }
 
 // used to terminate the program
@@ -716,109 +845,133 @@ void about(){
             "\n"
             ;
     cout << "Would you like to: \n";
-    cout << "1. Return to home\n";
-    cout << "2. Exit\n";
-    cout << "Enter your choice: ";
-    int choice;
-    cin >> choice;
-    switch (choice) {
-        case 1:
-            main();
-            break;
-        case 2:
-            cout << "Terminating the program\n";
-            Exit();
-            break;
-    }
+    do{
+        condition = false;
+        cout << "1. Return to home\n";
+        cout << "2. Exit\n";
+        cout << "Enter your choice: ";
+        int choice;
+        cin >> choice;
+        switch (choice) {
+            case 1:
+                main();
+                break;
+            case 2:
+                cout << "Terminating the program\n";
+                Exit();
+                break;
+            default:
+                condition = true;
+                cout << "Please choose from the availeble options! \n\n";
+                break;       
+        }
+    }while (condition);
+    
 }
 
 int main (){
-
-    cout << "\n------ Wellcome to the Family Tree Program ------\n\n";
-    cout << "Choose an option:\n";
-    cout << "1. Create a Family\n";
-    cout << "2. Display Family Tree\n";
-    cout << "3. Search for a Member\n";
-    cout << "4. Get Member Details\n";
-    cout << "5. Add chilled\n";
-    cout << "6. Calculate Relationship\n";
-    cout << "7. Delete Member\n";
-    cout << "8. About\n";
-    cout << "9. Exit\n";
-
-
-    familymember* Root;
-
-    int Choice;
-    cout << "Enter your choice: ";
-    cin >> Choice;
-    string Family;
-    string Name;
-    string Name2;
-
-// modify the swicth to acomodate link to return to main after complation of a function.
-
-    switch (Choice) {
-        case 1:
-            cout << "Enter the name of the Head of the family: ";
-            cin >> Name;
-            addFamily(Name);
-            break;
-        case 2:
-            cout << "Enter the name of the Head of the family: ";
-            cin >> Name;
-            displayFamilyTree(Name);
-            break;
-        case 3:
-            cout << "Enter the name of the Head of the family: ";
-            cin >> Name;
-            cout << "Enter the name of the member: ";
-            cin >> Name2;
-            searchFamilyMember(Name, Name2);
-            break;
-        case 4:
-            cout << "Enter the name of the family: ";
-            cin >> Family;
-            cout << "Enter the name of the name of the family member: ";
-            cin >> Name;
-            getMemberDetails(Family, Name);
-            break;
-        case 5:
-            cout << "Enter the family name: ";
-            cin >> Family;
-            cout << "Enter the parent name: ";
-            cin >> Name;
-            cout << "Enter the child name: ";
-            cin >> Name2;
-            addChild(Family, Name, Name2);
-            break;
-        case 6:
-            cout << "Enter the family name: ";
-            cin >> Family;
-            cout << "Enter the name of the first member: ";
-            cin >> Name;
-            cout << "Enter the name of the second member: ";
-            cin >> Name2;
-            calculateRelationship(Family, Name, Name2);
-            break;
-        case 7:
-            cout << "Enter the family name: ";
-            cin >> Family;
-            cout << "Enter the name of the member to delete: ";
-            cin >> Name;
-            deleteMember(Family, Name);
-            break;
-        case 8:
-            about();
-            break;
-        case 9:
-            Exit();
-            break;
-        default:
-            cout << "Invalid choice\n";
-            cout << "Choose again.\n";
-            main();
-            break;
+    if (start){
+        cout <<"-----------------------------------------------------------\n";
+        cout << "\n------ Wellcome to the Family Tree Program ------\n\n";
+        start = false;
     }
-}
+    else{
+        cout <<"-----------------------------------------------------------\n";
+    }
+    do {
+        condition = false;
+        cout << "Choose an option:\n";
+        cout << "1. Create a Family\n";
+        cout << "2. Display Family Tree\n";
+        cout << "3. Search for a Member\n";
+        cout << "4. Get Member Details\n";
+        cout << "5. Add chilled\n";
+        cout << "6. Calculate Relationship\n";
+        cout << "7. Delete Member\n";
+        cout << "8. About\n";
+        cout << "9. Exit\n";
 
+
+        familymember* Root;
+
+        int Choice;
+        cout << "Enter your choice: ";
+        cin >> Choice;
+        string Family;
+        string Name;
+        string Name2;
+
+    // modify the swicth to acomodate link to return to main after complation of a function.
+
+        switch (Choice) {
+            case 1:
+                cout <<"****************************************************************************\n";
+                cout << "Enter the name of the Head of the family: ";
+                cin >> Name;
+                addFamily(Name);
+                break;
+            case 2:
+                cout <<"****************************************************************************\n";
+                cout << "Enter the name of the Head of the family: ";
+                cin >> Name;
+                displayFamilyTree(Name);
+                break;
+            case 3:
+                cout <<"****************************************************************************\n";
+                cout << "Enter the name of the Head of the family: ";
+                cin >> Name;
+                cout << "Enter the name of the member: ";
+                cin >> Name2;
+                searchFamilyMember(Name, Name2);
+                break;
+            case 4:
+                cout <<"****************************************************************************\n";
+                cout << "Enter the name of the family: ";
+                cin >> Family;
+                cout << "Enter the name of the name of the family member: ";
+                cin >> Name;
+                getMemberDetails(Family, Name);
+                break;
+            case 5:
+                cout <<"****************************************************************************\n";
+                cout << "Enter the family name: ";
+                cin >> Family;
+                cout << "Enter the parent name: ";
+                cin >> Name;
+                cout << "Enter the child name: ";
+                cin >> Name2;
+                addChild(Family, Name, Name2);
+                break;
+            case 6:
+                cout <<"****************************************************************************\n";
+                cout << "Enter the family name: ";
+                cin >> Family;
+                cout << "Enter the name of the first member: ";
+                cin >> Name;
+                cout << "Enter the name of the second member: ";
+                cin >> Name2;
+                calculateRelationship(Family, Name, Name2);
+                break;
+            case 7:
+                cout <<"****************************************************************************\n";
+                cout << "Enter the family name: ";
+                cin >> Family;
+                cout << "Enter the name of the member to delete: ";
+                cin >> Name;
+                deleteMember(Family, Name);
+                break;
+            case 8:
+                cout <<"****************************************************************************\n";
+                about();
+                break;
+            case 9:
+                cout <<"****************************************************************************\n";
+                Exit();
+                break;
+            default:
+                cout << "Please choose from the availeble options! \n\n";
+                condition = true;
+                break;
+        }
+    }while (condition);
+}

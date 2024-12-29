@@ -55,8 +55,8 @@ void about(){
             "I used vector to form the adjecency matrix to allow dynamicaly increasing the size of the graph. I really hope that you have a greate time using the program. Thank you! \n\n" 
             ;
     int choice;
-    do
-    {
+    do{
+        cond = false;
         cout << "1, Home\n"
                 "2, Close the program.\n";
         cout << "Choice: ";
@@ -81,7 +81,6 @@ void about(){
             break;
         }
     }while (cond);
-    
 }
 
 // Function to find the minimum distance vertex
@@ -150,6 +149,7 @@ void dijkstra_al(vector<vector<int>> &Map, vector<string> &cities, int start, in
     cout << "\n\n";
     int choice;
     do{
+        cond = false;
         cout << "1, Home\n"
                 "2, Find short path again.\n"
                 "3, Close the program.\n";
@@ -179,7 +179,6 @@ void dijkstra_al(vector<vector<int>> &Map, vector<string> &cities, int start, in
             break;
         }
     }while (cond);
-    
 }
 
 // Function to get city index
@@ -251,6 +250,7 @@ void Add_City(vector<string>& cities, vector<vector<int>>& Map)// allow the modi
             "4, Exit. \n";
     int choice;
     do{
+        cond = false;
         cout << "Choice: ";
         cin >> choice;
         switch (choice){
@@ -300,41 +300,41 @@ void shortest_path(vector<string> &cities, vector<vector<int>> &Map){
         int choice;
         cout << city1 << " does not exist.\n";
         do {
-        cout << "1, Enter again\n"
-                "2. Add the city\n"
-                "3. Exit\n";
-        int choice;
-        cout << "Choice: ";
-        cin >> choice ;
-        switch (choice)
-        {
-            case 1:
-                cout << "Enter the starting city: ";
-                cin.ignore();
-                getline(cin, city1);
-                start = City_Index(cities, city1);
-                 if (start == -1){
-                        cout << "=====================================================================================================\n";
-                        cout << "You enterd city name that dose not exist start again.\n\n";
-                        main();
-                        break;
-                    }
-                break;
-            case 2:
-                cout << "=====================================================================================================\n";
-                Add_City(cities,Map);
-                return;
-            case 3:
-                cout << "=====================================================================================================\n";
-                close();
-                return;
-            default:
-                cond = true;
-                cout << "Please choose from the availeble options! \n\n";
-                break;
-        } 
+            cond = false;
+            cout << "1, Enter again\n"
+                    "2. Add the city\n"
+                    "3. Exit\n";
+            int choice;
+            cout << "Choice: ";
+            cin >> choice ;
+            switch (choice)
+            {
+                case 1:
+                    cout << "Enter the starting city: ";
+                    cin.ignore();
+                    getline(cin, city1);
+                    start = City_Index(cities, city1);
+                    if (start == -1){
+                            cout << "=====================================================================================================\n";
+                            cout << "You enterd city name that dose not exist start again.\n\n";
+                            main();
+                            break;
+                        }
+                    break;
+                case 2:
+                    cout << "=====================================================================================================\n";
+                    Add_City(cities,Map);
+                    return;
+                case 3:
+                    cout << "=====================================================================================================\n";
+                    close();
+                    return;
+                default:
+                    cond = true;
+                    cout << "Please choose from the availeble options! \n\n";
+                    break;
+            } 
         }while(cond);
-        cond = false;
     }
 
     // the destination city
@@ -348,6 +348,7 @@ void shortest_path(vector<string> &cities, vector<vector<int>> &Map){
                 "3. Exit\n";
         int choice;
         do {
+            cond = false;
             cout << "Choice: ";
             cin >> choice ;
             switch (choice)
@@ -382,7 +383,6 @@ void shortest_path(vector<string> &cities, vector<vector<int>> &Map){
                     
             } 
         } while (cond);
-        cond = false;
     }
     
     cout << "\n";
@@ -414,6 +414,7 @@ void Connections(vector<string> cities, vector<vector<int>> Map) {
                 "4, Home. \n";
         int choice;
         do {
+            cond = false;
             cout << "Choice: ";
             cin >> choice;
             switch (choice){
@@ -466,6 +467,7 @@ void Connections(vector<string> cities, vector<vector<int>> Map) {
     cout << "3, Home. \n";
     int choice;
     do {
+        cond = false;
         cout << "Choice: ";
         cin >> choice;
         switch (choice){
@@ -488,7 +490,6 @@ void Connections(vector<string> cities, vector<vector<int>> Map) {
                 break;
         }
     }while (cond);
-    
 }
 
 int main() {
@@ -504,6 +505,7 @@ int main() {
             "5, Exit\n";
     int choice;
     do {
+        cond = false;
         cout << "Choice: ";
         cin >> choice;
         switch (choice)
