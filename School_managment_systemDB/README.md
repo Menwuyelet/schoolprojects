@@ -1,0 +1,3 @@
+- This project is a database design and implementation using sql for a school management system.
+- In this database, there are entities such as students, teachers, staffs, parents, schedules, subjects, classrooms, and grad. additionally there are relational tables for mapping of relations of different entities such as student-parent relations.
+- The project is developed as a project for my Data Base Systems course and for the School management system i am working on using django.

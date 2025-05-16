@@ -1,0 +1,2 @@
+- This project is a mini hospital management data base design with functionalities such as recording patient and doctors information, appointment records, bill records and patient histories including sickness and medication histories.
+- The project is developed as a project for my Database Management Systems course.

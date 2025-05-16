@@ -1,0 +1,3 @@
+- This project is a java graphical app that contains two apps scientific calculator and a simple notepad. this is developed using java swing and awt libraries for the GUI.
+- The program is developed as a project for our Object Oriented Programming course with my class mates as a group project.
+- in this group project i participated in code writing and managing the project by dividing tasks and appointing them to team members and integrating all code blocks provided by team members in to one single program.
